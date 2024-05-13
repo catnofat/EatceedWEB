@@ -10,6 +10,7 @@ import InfoPage from './pages/InfoPage'
 import NotFoundPage from './pages/NotFoundPage'
 import MainLayout from './layouts/MainLayout'
 import RequiredAuthLayout from './layouts/RequiredAuthLayout'
+import './App.css'
 
 const App = () => {
   return (
