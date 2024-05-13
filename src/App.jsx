@@ -1,34 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import TitlePage from './pages/TitlePage'
+import LoginPage from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import CalendarPage from './pages/CalendarPage'
+import CalendarDetailPage from './pages/CalendarDetailPage'
+import ReportPage from './pages/ReportPage'
+import MobileLinkPage from './pages/MobileLinkPage'
+import InfoPage from './pages/InfoPage'
+import NotFoundPage from './pages/NotFoundPage'
+import MainLayout from './layouts/MainLayout'
+import RequiredAuthLayout from './layouts/RequiredAuthLayout'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={<TitlePage />}></Route>
+          <Route
+            path="/login"
+            element={<LoginPage />}></Route>
+          <Route
+            path="/register"
+            element={<RegisterPage />}></Route>
+          <Route element={<MainLayout />}>
+            <Route
+              path="/calendar"
+              element={<CalendarPage />}></Route>
+            <Route
+              path="/calendar/:id"
+              element={<CalendarDetailPage />}></Route>
+            <Route
+              path="/report"
+              element={<ReportPage />}></Route>
+            <Route
+              path="/more"
+              element={<MobileLinkPage />}></Route>
+          </Route>
+          <Route element={<RequiredAuthLayout />}>
+            <Route
+              path="/myinfo"
+              element={<InfoPage />}></Route>
+          </Route>
+          <Route
+            path="*"
+            element={<NotFoundPage />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   )
 }
 
