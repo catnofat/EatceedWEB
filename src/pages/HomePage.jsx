@@ -1,12 +1,12 @@
 import { Fragment } from 'react'
 import FNB from '../components/molecules/FNB'
 
-const ReportPage = () => {
+const HomePage = () => {
   return (
     <Fragment>
-      <FNB cur="report" />
+      <FNB cur="home" />
     </Fragment>
   )
 }
 
-export default ReportPage
+export default HomePage

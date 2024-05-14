@@ -1,13 +1,12 @@
-import styled from 'styled-components'
-
-const Pagediv = styled.div`
-  background-color: white;
-  width: 100vw;
-  height: 100vh;
-`
+import { Fragment } from 'react'
+import FNB from '../components/molecules/FNB'
 
 const CalendarPage = () => {
-  return <Pagediv></Pagediv>
+  return (
+    <Fragment>
+      <FNB cur="calendar" />
+    </Fragment>
+  )
 }
 
 export default CalendarPage

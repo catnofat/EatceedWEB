@@ -8,7 +8,6 @@ const StyledDiv = styled.div`
   margin-top: 0px;
   width: 100vw;
   height: 100vh;
-  background-color: #fe902f;
 `
 
 const MainLayout = () => {

@@ -1,9 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import styled from 'styled-components'
-import './GNB.css'
 import TitleLogo from '../atoms/TitleLogo'
-import UserIcon from '../atoms/NotiLogo'
+import UserIcon from '../atoms/UserIcon'
 
 const GNBContainer = styled.div`
   display: flex;
@@ -11,10 +10,13 @@ const GNBContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   color: #fff;
+  background-color: #fe902f;
+  @media (min-width: 500px) {
+    height: 10vh;
+  }
 `
 const PopUp = styled.div`
   cursor: pointer;
-  width: 100px;
   color: black;
   text-align: center;
   font-family: Pretendard;
@@ -24,8 +26,11 @@ const PopUp = styled.div`
   padding: 8px;
   margin-right: 16px;
   display: ${props => (props.$show ? 'block' : 'none')};
+  @media (min-width: 500px) {
+    font-size: 2rem;
+  }
 `
-const NotiLogo = styled.div`
+const UserLogo = styled.div`
   height: 75px;
   display: flex;
   margin-right: 5%;
@@ -44,8 +49,7 @@ const GNB = () => {
   const navigate = useNavigate()
 
   const handleLogoClick = () => {
-    console.log('Logo clicked')
-    navigate('/calendar')
+    navigate('/home')
   }
 
   const handleUserIconClick = () => {
@@ -54,11 +58,6 @@ const GNB = () => {
 
   const logoutClick = () => {
     console.log('Logout clicked')
-    navigate('/')
-  }
-  const myinfoClick = () => {
-    console.log('myinfo clicked')
-    navigate('/myinfo')
   }
 
   return (
@@ -66,15 +65,14 @@ const GNB = () => {
       <TitleLogo
         lrmargin="5%"
         color="white"
-        size="20px"
+        size="2rem"
         onClick={handleLogoClick}></TitleLogo>
-      <NotiLogo>
+      <UserLogo>
         <PopUp $show={showPopUp}>
-          <Hoverdiv onClick={logoutClick}>로그아웃</Hoverdiv>
-          <Hoverdiv onClick={myinfoClick}>유저정보</Hoverdiv>
+          <Hoverdiv onClick={logoutClick}>로그아웃 하기</Hoverdiv>
         </PopUp>
         <UserIcon onClick={handleUserIconClick}></UserIcon>
-      </NotiLogo>
+      </UserLogo>
     </GNBContainer>
   )
 }

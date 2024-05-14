@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import TitlePage from './pages/TitlePage'
+import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import CalendarPage from './pages/CalendarPage'
 import CalendarDetailPage from './pages/CalendarDetailPage'
 import ReportPage from './pages/ReportPage'
-import MobileLinkPage from './pages/MobileLinkPage'
-import InfoPage from './pages/InfoPage'
+import AlarmPage from './pages/AlarmPage'
+import MyPage from './pages/MyPage'
 import NotFoundPage from './pages/NotFoundPage'
 import MainLayout from './layouts/MainLayout'
-import RequiredAuthLayout from './layouts/RequiredAuthLayout'
 import './App.css'
 
 const App = () => {
@@ -28,6 +28,9 @@ const App = () => {
             element={<RegisterPage />}></Route>
           <Route element={<MainLayout />}>
             <Route
+              path="/home"
+              element={<HomePage />}></Route>
+            <Route
               path="/calendar"
               element={<CalendarPage />}></Route>
             <Route
@@ -37,17 +40,15 @@ const App = () => {
               path="/report"
               element={<ReportPage />}></Route>
             <Route
-              path="/more"
-              element={<MobileLinkPage />}></Route>
-          </Route>
-          <Route element={<RequiredAuthLayout />}>
+              path="/alarm"
+              element={<AlarmPage />}></Route>
             <Route
-              path="/myinfo"
-              element={<InfoPage />}></Route>
+              path="/my"
+              element={<MyPage />}></Route>
+            <Route
+              path="*"
+              element={<NotFoundPage />}></Route>{' '}
           </Route>
-          <Route
-            path="*"
-            element={<NotFoundPage />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
