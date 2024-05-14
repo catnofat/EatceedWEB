@@ -1,0 +1,61 @@
+.background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  height: 100vh;
+  background: url('../assets/background.png');
+  background-size: cover;
+}
+.smalltext {
+  color: 'white';
+  font-size: 3.5rem;
+  font-family: 'PretendardBold';
+  @media (max-width: 800px) {
+    font-size: 2rem;
+  }
+}
+.bigtext {
+  color: 'white';
+  font-size: 15rem;
+  font-family: 'PretendardBold';
+  @media (max-width: 800px) {
+    font-size: 7rem;
+  }
+}
+
+.textarea {
+  margin-top: 20vh;
+}
+.buttonw {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
+  height: 7vh;
+  font-size: 2rem;
+  font-family: 'PretendardBold';
+  background: white;
+  color: black;
+  border-radius: 50px;
+  margin: 5vh auto;
+}
+.buttonb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
+  height: 7vh;
+  font-size: 2rem;
+  font-family: 'PretendardBold';
+  background: black;
+  color: white;
+  border-radius: 50px;
+  margin: 5vh auto;
+}
+
+.buttonarea {
+  width: 100vw;
+  margin-bottom: 5vh;
+}
