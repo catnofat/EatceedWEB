@@ -1,5 +1,4 @@
 import GNB2 from '../components/molecules/GNB2'
-import { Fragment } from 'react'
 import LoginTempalte from '../components/templates/LoginTemplate'
 import styled from 'styled-components'
 

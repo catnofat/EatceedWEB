@@ -51,13 +51,6 @@ const Button = styled.button`
   margin-bottom: 15px;
 `
 
-const FindPassword = styled.div`
-  color: #bcbcbc;
-  font-size: 1.2rem;
-  font-family: pretendard;
-  text-decoration-line: underline;
-`
-
 const InputGroup = () => {
   const [idValue, setIdValue] = useState('') // id 입력 값 상태
   const [pwValue, setPwValue] = useState('') // pw 입력 값 상태
@@ -91,7 +84,6 @@ const InputGroup = () => {
         disabled={!isFilled}>
         확인
       </Button>
-      <FindPassword>비밀번호가 기억이 안 난다면?</FindPassword>
     </Inputdiv>
   )
 }
