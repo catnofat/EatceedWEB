@@ -13,11 +13,32 @@ const IdInput = styled.input`
   width: 90vw;
   height: 38px;
   margin-bottom: 20px;
+  font-size: 18px;
+  font-family: pretendard;
+  color: black;
+  border-bottom: 1.5px solid #e1e1e1;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  &::placeholder {
+    color: #bcbcbc;
+  }
 `
 const PwInput = styled.input`
   width: 90vw;
   height: 38px;
+
   margin-bottom: 20px;
+  font-size: 18px;
+  font-family: pretendard;
+  color: black;
+  border-bottom: 1.5px solid #e1e1e1;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  &::placeholder {
+    color: #bcbcbc;
+  }
 `
 
 const Button = styled.button`
@@ -27,6 +48,14 @@ const Button = styled.button`
   background-color: ${({ filled }) => (filled ? '#fe902f' : '#f5f5f5')};
   color: ${({ filled }) => (filled ? 'white' : '#bbbbbb')};
   font-family: pretendard;
+  margin-bottom: 15px;
+`
+
+const FindPassword = styled.div`
+  color: #bcbcbc;
+  font-size: 1.2rem;
+  font-family: pretendard;
+  text-decoration-line: underline;
 `
 
 const InputGroup = () => {
@@ -62,6 +91,7 @@ const InputGroup = () => {
         disabled={!isFilled}>
         확인
       </Button>
+      <FindPassword>비밀번호가 기억이 안 난다면?</FindPassword>
     </Inputdiv>
   )
 }

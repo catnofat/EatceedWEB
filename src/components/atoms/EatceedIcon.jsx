@@ -7,6 +7,8 @@ const Titlediv = styled.div`
   align-items: center;
   justify-content: center;
   margin: auto;
+  margin-top: 10vh;
+  margin-bottom: 6.5vh;
 `
 
 const MainTitle = styled.div`
@@ -16,8 +18,8 @@ const MainTitle = styled.div`
 `
 
 const SubTitle = styled.div`
-  font-size: 1.2rem;
-  color: black;
+  font-size: 1rem;
+  color: #bcbcbc;
   font-family: Pretendard;
 `
 
