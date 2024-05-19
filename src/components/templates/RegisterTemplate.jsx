@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import InputGroup from '../molecules/InputGroup'
 import EatceedIcon from '../atoms/EatceedIcon'
+import CheckboxGroup from '../molecules/CheckboxGroup'
 
 const Templatediv = styled.div`
   margin-top: 7vh;
@@ -14,6 +15,7 @@ const RegisterTemplate = () => {
     <Templatediv>
       <EatceedIcon />
       <InputGroup />
+      <CheckboxGroup />
     </Templatediv>
   )
 }
