@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import InputGroup from '../molecules/InputGroup'
+import LogInputGroup from '../molecules/LogInputGroup'
 import EatceedIcon from '../atoms/EatceedIcon'
 
 const Templatediv = styled.div`
@@ -21,7 +21,7 @@ const LoginTempalte = () => {
   return (
     <Templatediv>
       <EatceedIcon />
-      <InputGroup />
+      <LogInputGroup />
       <FindPassword>비밀번호가 기억이 안 난다면?</FindPassword>
     </Templatediv>
   )

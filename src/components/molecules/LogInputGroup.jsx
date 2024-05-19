@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
+import CheckboxGroup from './CheckboxGroup'
 
 const Inputdiv = styled.div`
   display: flex;
@@ -40,18 +41,24 @@ const PwInput = styled.input`
     color: #bcbcbc;
   }
 `
-
 const Button = styled.button`
   width: 85vw;
   height: 45px;
   font-size: 1.6rem;
-  background-color: ${({ filled }) => (filled ? '#fe902f' : '#f5f5f5')};
-  color: ${({ filled }) => (filled ? 'white' : '#bbbbbb')};
+  background-color: ${({ $filled }) => ($filled ? '#fe902f' : '#f5f5f5')};
+  color: ${({ $filled }) => ($filled ? 'white' : '#bbbbbb')};
   font-family: pretendard;
   margin-bottom: 15px;
 `
+const Error = styled.div`
+  color: red;
+  font-size: 1rem;
+  font-family: Pretendard;
+  margin-right: auto;
+  margin-left: 10vw;
+`
 
-const InputGroup = () => {
+const LogInputGroup = () => {
   const [idValue, setIdValue] = useState('') // id 입력 값 상태
   const [pwValue, setPwValue] = useState('') // pw 입력 값 상태
 
@@ -80,7 +87,7 @@ const InputGroup = () => {
         onChange={handlePwChange}
       />
       <Button
-        filled={isFilled}
+        $filled={isFilled}
         disabled={!isFilled}>
         확인
       </Button>
@@ -88,4 +95,4 @@ const InputGroup = () => {
   )
 }
 
-export default InputGroup
+export default LogInputGroup

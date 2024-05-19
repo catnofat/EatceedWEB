@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from 'react'
 import Checkbox from '../atoms/Checkbox'
 import styled from 'styled-components'
 
+const Div = styled.div`
+  width: 100%;
+`
 const CheckboxLine = styled.div`
   display: flex;
   justify-content: space-between;
@@ -34,8 +37,11 @@ const Popup = styled.div`
   z-index: 2;
 `
 
-const CheckboxGroup = () => {
+const CheckboxGroup = ({ setCheckValue }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [service, setService] = useState(false)
+  const [privateinfo, setPrivateinfo] = useState(false)
+
   const ref = useRef()
 
   useEffect(() => {
@@ -52,22 +58,38 @@ const CheckboxGroup = () => {
     }
   }, [isOpen])
 
+  useEffect(() => {
+    if (service && privateinfo) {
+      setCheckValue(true)
+    } else {
+      setCheckValue(false)
+    }
+  }, [service, privateinfo])
+
   return (
-    <div>
+    <Div>
       <CheckboxLine>
-        <Checkbox text="개인 정보 활용 동의" />
+        <Checkbox
+          checked={privateinfo}
+          onChange={setPrivateinfo}
+          text="개인 정보 활용 동의"
+        />
         <Morewatch onClick={() => setIsOpen(!isOpen)}>
           자세히 보기 &#62;
         </Morewatch>
       </CheckboxLine>
       <CheckboxLine>
-        <Checkbox text="이용 약관 동의" />
+        <Checkbox
+          checked={service}
+          onChange={setService}
+          text="이용 약관 동의"
+        />
         <Morewatch onClick={() => setIsOpen(!isOpen)}>
           자세히 보기 &#62;
         </Morewatch>
       </CheckboxLine>
       {isOpen && <Popup ref={ref}>팝업창 내용</Popup>}
-    </div>
+    </Div>
   )
 }
 

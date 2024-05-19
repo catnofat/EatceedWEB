@@ -3,11 +3,14 @@ import styled from 'styled-components'
 import checkoff from '../../assets/checkoff.svg'
 import checkon from '../../assets/checkon.svg'
 
-function Checkbox({ text }) {
+function Checkbox({ text, disabled, checked, onChange }) {
   return (
     <StyledLabel htmlFor={text}>
       <StyledInput
         type="checkbox"
+        disabled={disabled}
+        checked={checked}
+        onChange={({ target: { checked } }) => onChange(checked)}
         id={text}
         name={text}
       />
