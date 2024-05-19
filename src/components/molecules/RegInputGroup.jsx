@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import CheckboxGroup from './CheckboxGroup'
+import { useNavigate } from 'react-router-dom'
 
 const Inputdiv = styled.div`
   display: flex;
@@ -64,6 +65,8 @@ const RegInputGroup = () => {
   const [checkValue, setCheckValue] = useState(false)
   const [isButtonClicked, setIsButtonClicked] = useState(false) //버튼 클릭 상태
 
+  const navigate = useNavigate()
+
   const handleIdChange = e => {
     setIdValue(e.target.value) // id 입력 값 업데이트
   }
@@ -79,6 +82,7 @@ const RegInputGroup = () => {
 
   const handleClick = () => {
     setIsButtonClicked(true) // 버튼 클릭 상태 업데이트
+    navigate('/emailverification', { state: { id: idValue } })
   }
 
   return (

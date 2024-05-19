@@ -50,13 +50,6 @@ const Button = styled.button`
   font-family: pretendard;
   margin-bottom: 15px;
 `
-const Error = styled.div`
-  color: red;
-  font-size: 1rem;
-  font-family: Pretendard;
-  margin-right: auto;
-  margin-left: 10vw;
-`
 
 const LogInputGroup = () => {
   const [idValue, setIdValue] = useState('') // id 입력 값 상태
