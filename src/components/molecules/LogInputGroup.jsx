@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
-import CheckboxGroup from './CheckboxGroup'
+import { useNavigate } from 'react-router-dom'
 
 const Inputdiv = styled.div`
   display: flex;
@@ -54,6 +54,7 @@ const Button = styled.button`
 const LogInputGroup = () => {
   const [idValue, setIdValue] = useState('') // id 입력 값 상태
   const [pwValue, setPwValue] = useState('') // pw 입력 값 상태
+  const navigate = useNavigate()
 
   const handleIdChange = e => {
     setIdValue(e.target.value) // id 입력 값 업데이트
@@ -61,6 +62,10 @@ const LogInputGroup = () => {
 
   const handlePwChange = e => {
     setPwValue(e.target.value) // pw 입력 값 업데이트
+  }
+
+  const handleClick = () => {
+    navigate('/home')
   }
 
   const isFilled = idValue && pwValue // 둘 다 값이 있으면 true
@@ -81,7 +86,8 @@ const LogInputGroup = () => {
       />
       <Button
         $filled={isFilled}
-        disabled={!isFilled}>
+        disabled={!isFilled}
+        onClick={handleClick}>
         확인
       </Button>
     </Inputdiv>
