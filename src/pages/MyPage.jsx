@@ -1,10 +1,10 @@
 import { Fragment } from 'react'
-import FNB from '../components/molecules/FNB'
+import SNB from '../components/molecules/SNB'
 
 const MyPage = () => {
   return (
     <Fragment>
-      <FNB cur="user" />
+      <SNB cur="user" />
     </Fragment>
   )
 }

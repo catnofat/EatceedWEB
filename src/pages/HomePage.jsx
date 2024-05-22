@@ -1,10 +1,24 @@
 import { Fragment } from 'react'
-import FNB from '../components/molecules/FNB'
+import SNB from '../components/molecules/SNB'
+import styled from 'styled-components'
+
+const LayoutContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 10vh;
+`
+
+const SectionContainer = styled.div`
+  width: 50%;
+`
 
 const HomePage = () => {
   return (
     <Fragment>
-      <FNB cur="home" />
+      <LayoutContainer>
+        <SNB cur="home" />
+        <SectionContainer></SectionContainer>
+      </LayoutContainer>
     </Fragment>
   )
 }

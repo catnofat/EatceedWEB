@@ -11,90 +11,82 @@ import reportsel from '../../assets/reportsel.png'
 import user from '../../assets/user.png'
 import usersel from '../../assets/usersel.png'
 
-const FNBContainer = styled.div`
+const SNBContainer = styled.div`
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   display: flex;
-  height: 10vh;
+  flex-direction: column;
+  height: 90vh;
+  width: 10vw;
   border-top: 0.5px solid #ebebeb;
   justify-content: space-around;
   align-items: center;
   background-color: #fffefd;
 `
 const ButtonContainer = styled.div`
-  width: 20vw;
   display: flex;
   flex-direction: column;
+  height: 22.5vh;
 `
 const HomeImage = styled.div`
-  margin: auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
   background: url(${props => (props.$cur === 'home' ? homesel : home)});
   background-size: cover;
   width: 22px;
   height: 22px;
-  @media (min-width: 500px) {
-    width: 35px;
-    height: 35px;
-  }
 `
 const CalImage = styled.div`
-  margin: auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
   background: url(${props => (props.$cur === 'calendar' ? calsel : cal)});
   background-size: cover;
   width: 22px;
   height: 22px;
-  @media (min-width: 500px) {
-    width: 35px;
-    height: 35px;
-  }
 `
 const RepImage = styled.div`
-  margin: auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
   background: url(${props => (props.$cur === 'report' ? reportsel : report)});
   background-size: cover;
   width: 22px;
   height: 22px;
-  @media (min-width: 500px) {
-    width: 35px;
-    height: 35px;
-  }
 `
 const AlarmImage = styled.div`
-  margin: auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
   background: url(${props => (props.$cur === 'alarm' ? alarmsel : alarm)});
   background-size: cover;
   width: 22px;
   height: 22px;
-  @media (min-width: 500px) {
-    width: 38px;
-    height: 35px;
-  }
 `
 const UserImage = styled.div`
-  margin: auto;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
   background: url(${props => (props.$cur === 'user' ? usersel : user)});
   background-size: cover;
   width: 22px;
   height: 22px;
-  @media (min-width: 500px) {
-    width: 35px;
-    height: 35px;
-  }
 `
 const Text = styled.div`
   margin-top: 6.5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
   color: rgba(0, 0, 0, 0.6);
   text-align: center;
   font-family: Pretendard;
   font-size: 1.2rem;
-  @media (min-width: 500px) {
-    font-size: 2rem;
-  }
 `
 
-const FNB = ({ cur }) => {
+const SNB = ({ cur }) => {
   const navigate = useNavigate()
   const homeClick = () => {
     navigate('/home')
@@ -113,7 +105,7 @@ const FNB = ({ cur }) => {
   }
 
   return (
-    <FNBContainer>
+    <SNBContainer>
       <ButtonContainer onClick={homeClick}>
         <HomeImage $cur={cur}></HomeImage>
         <Text>홈</Text>
@@ -134,8 +126,8 @@ const FNB = ({ cur }) => {
         <UserImage $cur={cur}></UserImage>
         <Text>마이 메뉴</Text>
       </ButtonContainer>
-    </FNBContainer>
+    </SNBContainer>
   )
 }
 
-export default FNB
+export default SNB
