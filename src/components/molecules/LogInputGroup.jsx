@@ -1,8 +1,13 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useMutation } from '@tanstack/react-query'
+import { login } from '../../assets/services/auths'
+import { useForm } from 'react-hook-form'
 
-const Inputdiv = styled.div`
+// Using styled-components library for CSS in JS styling.
+
+const Inputform = styled.form`
   display: flex;
   width: 100vw;
   flex-direction: column;
@@ -52,45 +57,87 @@ const Button = styled.button`
 `
 
 const LogInputGroup = () => {
-  const [idValue, setIdValue] = useState('') // id 입력 값 상태
-  const [pwValue, setPwValue] = useState('') // pw 입력 값 상태
+  // State management of login Error
+  const [loginError, setLoginError] = useState('')
+
+  // Manage Page movement
   const navigate = useNavigate()
 
-  const handleIdChange = e => {
-    setIdValue(e.target.value) // id 입력 값 업데이트
-  }
+  // Used to send or import data to a server
+  const mutation = useMutation({
+    mutationFn: data => {
+      return login(data)
+    }
+  })
 
-  const handlePwChange = e => {
-    setPwValue(e.target.value) // pw 입력 값 업데이트
-  }
-
-  const handleClick = () => {
-    navigate('/home')
-  }
-
-  const isFilled = idValue && pwValue // 둘 다 값이 있으면 true
+  // form management
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors }
+  } = useForm({
+    mode: 'onChange',
+    criteriaMode: 'all'
+  })
 
   return (
-    <Inputdiv>
+    <Inputform
+      noValidate
+      onSubmit={handleSubmit(data => {
+        console.log(data)
+        mutation.mutate(data, {
+          onSuccess: response => {
+            console.log(response)
+            console.log(data)
+            localStorage.setitem('token', response.headers.authorization)
+            navigate('/home')
+          },
+          onError: error => {
+            if (error.response?.data?.error) {
+              setLoginError(
+                <>
+                  <div>오류: {error.response?.data?.error?.message}</div>
+                  <div>아이디 또는 비밀번호가 잘못되었습니다</div>
+                </>
+              )
+            } else {
+              setLoginError(
+                '로그인에 실패했습니다. 아이디 또는 비밀번호를 다시 확인해주세요.'
+              )
+            }
+          }
+        })
+      })}>
       <IdInput
-        type="text"
+        type="email"
+        placeholder="아이디"
         name="이메일 입력"
-        placeholder="이메일"
-        onChange={handleIdChange}
+        {...register('email', {
+          required: '이메일은 필수 입력입니다.',
+          pattern: {
+            value: /\S+@\S+\.\S+/,
+            message: '이메일 형식에 맞지 않습니다.'
+          }
+        })}
       />
+      {errors.email && <small role="alert">{errors.email.message}</small>}
+
       <PwInput
         type="password"
         name="패스워드 입력"
         placeholder="비밀번호"
-        onChange={handlePwChange}
+        {...register('password', {
+          required: '비밀번호는 필수 입력입니다.'
+        })}
       />
+      {errors.password && <small role="alert">{errors.password.message}</small>}
       <Button
-        $filled={isFilled}
-        disabled={!isFilled}
-        onClick={handleClick}>
+        $filled={!isSubmitting}
+        disabled={isSubmitting}>
         확인
       </Button>
-    </Inputdiv>
+      {loginError && <p>{loginError}</p>}
+    </Inputform>
   )
 }
 
