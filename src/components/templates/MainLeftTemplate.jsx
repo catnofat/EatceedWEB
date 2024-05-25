@@ -7,6 +7,7 @@ import messageicon from '../../assets/message.svg'
 
 const HalfContainer = styled.div`
   display: flex;
+  overflow-y: hidden;
   flex-direction: column;
   align-items: center;
   flex: 1;
