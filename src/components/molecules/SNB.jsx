@@ -12,15 +12,10 @@ import user from '../../assets/user.png'
 import usersel from '../../assets/usersel.png'
 
 const SNBContainer = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
   display: flex;
   flex-direction: column;
   height: 90vh;
-  width: 10vw;
-  border-top: 0.5px solid #ebebeb;
+  width: 10rem;
   justify-content: space-around;
   align-items: center;
   background-color: #fffefd;
