@@ -10,6 +10,7 @@ import AlarmPage from './pages/AlarmPage'
 import MyPage from './pages/MyPage'
 import NotFoundPage from './pages/NotFoundPage'
 import MainLayout from './layouts/MainLayout'
+import OnBoardingPage from './pages/OnBoardingPage'
 import './App.css'
 
 const App = () => {
@@ -26,6 +27,9 @@ const App = () => {
           <Route
             path="/register"
             element={<RegisterPage />}></Route>
+          <Route
+            path="/onboarding"
+            element={<OnBoardingPage />}></Route>
           <Route element={<MainLayout />}>
             <Route
               path="/home"
