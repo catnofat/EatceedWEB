@@ -3,6 +3,7 @@ import TitlePage from './pages/TitlePage'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
+import EmailVerificationPage from './pages/EmailVerificationPage'
 import CalendarPage from './pages/CalendarPage'
 import CalendarDetailPage from './pages/CalendarDetailPage'
 import ReportPage from './pages/ReportPage'
@@ -28,8 +29,10 @@ const App = () => {
             path="/register"
             element={<RegisterPage />}></Route>
           <Route
-            path="/onboarding"
-            element={<OnBoardingPage />}></Route>
+
+            path="/emailverification"
+            element={<EmailVerificationPage />}></Route>
+
           <Route element={<MainLayout />}>
             <Route
               path="/home"

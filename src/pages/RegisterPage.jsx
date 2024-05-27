@@ -1,11 +1,18 @@
 import GNB2 from '../components/molecules/GNB2'
-import { Fragment } from 'react'
+import RegisterTemplate from '../components/templates/RegisterTemplate'
+import styled from 'styled-components'
 
+const Pagediv = styled.div`
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+`
 const RegisterPage = () => {
   return (
-    <Fragment>
-      <GNB2 text="회원가입"></GNB2>
-    </Fragment>
+    <Pagediv>
+      <GNB2 text="가입하기"></GNB2>
+      <RegisterTemplate />
+    </Pagediv>
   )
 }
 

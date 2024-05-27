@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
-import FNB from '../components/molecules/FNB'
 import MyCalendar from '../components/molecules/MyCalendar';
+import SNB from '../components/molecules/SNB'
+
 
 const CalendarPage = () => {
 
@@ -8,8 +9,9 @@ const CalendarPage = () => {
 
   return (
     <Fragment>
-      <FNB cur="calendar" />
+      <SNB cur="calendar" />
       <MyCalendar></MyCalendar>
+
     </Fragment>
   )
 }

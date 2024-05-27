@@ -10,13 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
     "react-calendar": "^5.0.0",
-    "react-dom": "^18.2.0",
+    "@tanstack/react-query": "^5.37.1",
+    "axios": "^1.7.2",
+    "http-proxy-middleware": "^3.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.51.5",
+    "react-liquid-gauge": "^1.2.4",
     "react-router-dom": "^6.23.1",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.11",
+    "vite-jsconfig-paths": "^2.0.1"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "^5.37.1",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react-swc": "^3.5.0",
