@@ -1,10 +1,10 @@
 import { Fragment } from 'react'
-import FNB from '../components/molecules/FNB'
+import SNB from '../components/molecules/SNB'
 
 const AlarmPage = () => {
   return (
     <Fragment>
-      <FNB cur="alarm" />
+      <SNB cur="alarm" />
     </Fragment>
   )
 }
