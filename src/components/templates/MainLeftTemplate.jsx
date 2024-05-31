@@ -4,6 +4,9 @@ import Checkbox from '../atoms/Checkbox'
 import NutProgress from '../molecules/NutProgress'
 import Kgdiffgroup from '../molecules/KgdiffGroup'
 import messageicon from '../../assets/message.svg'
+import { useQuery } from '@tanstack/react-query'
+import { getMeal } from '../../services/meal'
+import { getDateMeal } from '../../services/meal'
 
 const HalfContainer = styled.div`
   display: flex;
@@ -73,26 +76,19 @@ const today = new Date()
 const formattedDate = `${today.getMonth() + 1}월 ${today.getDate()}일`
 
 const MainLeftTemplate = () => {
-  const response = {
-    maintainMeal: {
-      calorie: 0,
-      carbohydrate: 0,
-      protein: 0,
-      fat: 0
-    },
-    targetMeal: {
-      calorie: 0,
-      carbohydrate: 0,
-      protein: 0,
-      fat: 0
-    },
-    currentMeal: {
-      calorie: 0,
-      carbohydrate: 0,
-      protein: 0,
-      fat: 0
+  const {
+    data: todaymeal,
+    error,
+    isLoading
+  } = useQuery({
+    queryKey: ['meal'],
+    queryFn: async () => {
+      const res = await getMeal()
+      return res.data
     }
-  }
+  })
+
+  const response = todaymeal?.response
 
   return (
     <HalfContainer>
