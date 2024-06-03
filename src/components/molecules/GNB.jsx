@@ -31,6 +31,7 @@ const GNB = () => {
   }
 
   const logoutClick = () => {
+    localStorage.removeItem('token')
     navigate('/')
   }
 

@@ -2,8 +2,10 @@ import styled from 'styled-components'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
-import { login } from '../../assets/services/auths'
+import { useDispatch } from 'react-redux'
+import { login } from '../../services/auths'
 import { useForm } from 'react-hook-form'
+import { setUser } from '../../store/slices/userSlice'
 
 // Using styled-components library for CSS in JS styling.
 
@@ -62,6 +64,7 @@ const LogInputGroup = () => {
 
   // Manage Page movement
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   // Used to send or import data to a server
   const mutation = useMutation({
@@ -88,8 +91,16 @@ const LogInputGroup = () => {
         mutation.mutate(data, {
           onSuccess: response => {
             console.log(response)
-            console.log(data)
-            localStorage.setitem('token', response.headers.authorization)
+            const token = response.headers.get('Authorization')
+
+            const oneHourInMs = 60 * 60 * 1000
+            const expirationTime = new Date().getTime() + oneHourInMs
+
+            dispatch(setUser({ expirationTime }))
+            console.log(token)
+
+            localStorage.setItem('token', token)
+
             navigate('/home')
           },
           onError: error => {
@@ -97,7 +108,7 @@ const LogInputGroup = () => {
               setLoginError(
                 <>
                   <div>오류: {error.response?.data?.error?.message}</div>
-                  <div>아이디 또는 비밀번호가 잘못되었습니다</div>
+                  <div>아이디 또는 비밀번호가잘 못되었습니다</div>
                 </>
               )
             } else {

@@ -47,7 +47,26 @@ const FoodMenu = styled.div`
   flex-direction: column;
 `
 
-const DietGroup = ({ menus }) => {
+const DietGroup = ({ menus, time, mealtype, imguri }) => {
+  console.log(mealtype)
+  const getMealtype = mealtype => {
+    switch (mealtype) {
+      case 'BREAKFAST':
+        return '아침'
+      case 'LUNCH':
+        return '점심'
+      case 'DINNER':
+        return '저녁'
+      default:
+        return '간식'
+    }
+  }
+
+  const getFormatTime = time => {
+    const hours = String(time.hour).padStart(2, '0')
+    const minutes = String(time.minute).padStart(2, '0')
+    return `${hours}:${minutes}`
+  }
   return (
     <Containerdiv>
       <Textdiv>
@@ -57,11 +76,11 @@ const DietGroup = ({ menus }) => {
             color="#ff8214">
             &bull;&nbsp;
           </BoldText>
-          <BoldText size="1.8rem">아침&nbsp;</BoldText>
+          <BoldText size="1.8rem">{getMealtype(mealtype)}&nbsp;</BoldText>
           <BoldText
             size="1.8rem"
             color="gray">
-            07:00
+            {getFormatTime(time)}
           </BoldText>
         </Timetext>
 
