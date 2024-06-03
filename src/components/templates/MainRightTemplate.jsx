@@ -83,7 +83,10 @@ const MainRightTemplate = () => {
       {mealrecord.map((meal, index) => (
         <DietGroup
           key={index}
-          menus={meal?.foods}></DietGroup>
+          mealtype={meal?.mealType}
+          imguri={meal?.imageUri}
+          menus={meal?.foods}
+          time={meal?.time}></DietGroup>
       ))}
     </HalfContainer>
   )
