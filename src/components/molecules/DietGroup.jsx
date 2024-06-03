@@ -63,13 +63,9 @@ const DietGroup = ({ menus, time, mealtype, imguri }) => {
   }
 
   const getFormatTime = time => {
-    let hh = time.hour
-    hh = hh >= 10 ? hh : '0' + hh
-
-    let mm = time.minute
-    mm = mm >= 10 ? mm : '0' + mm
-
-    return hh + ':' + mm
+    const hours = String(time.hour).padStart(2, '0')
+    const minutes = String(time.minute).padStart(2, '0')
+    return `${hours}:${minutes}`
   }
   return (
     <Containerdiv>
