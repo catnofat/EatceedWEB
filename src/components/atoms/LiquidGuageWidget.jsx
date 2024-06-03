@@ -11,6 +11,8 @@ export default class LiquidGaugeWidget extends Component {
       value: props.value
     }
 
+    this.targetCal = props.target
+
     this.startColor = props.color // cornflowerblue
     this.endColor = props.color // crimson
   }
@@ -82,7 +84,7 @@ export default class LiquidGaugeWidget extends Component {
                   style={valueStyle}
                   x="0"
                   dy="1.2em">
-                  2000
+                  {this.targetCal}
                 </tspan>
               </tspan>
             )

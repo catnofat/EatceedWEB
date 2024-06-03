@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { getWeight } from '../../services/members'
+import { useQuery } from '@tanstack/react-query'
 
 const TextContainer = styled.div`
   display: flex;
@@ -29,16 +31,24 @@ const Text = styled.div`
   font-family: pretendardBold;
 `
 
-const currentkg = 60
-const targetkg = 72
 const weekdiff = 5
 
 const Kgdiffgroup = () => {
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['weight'],
+    queryFn: async () => {
+      const res = await getWeight()
+      return res.data
+    }
+  })
+
+  const mydata = data?.response
+
   return (
     <TextContainer>
       <Textdiv>
         <Text size="1.2rem">현재체중&nbsp;</Text>
-        <Text size="1.4rem"> {currentkg}kg</Text>
+        <Text size="1.4rem"> {mydata?.weight}kg</Text>
         <Diffdiv>
           <Text
             size="1rem"
@@ -54,7 +64,7 @@ const Kgdiffgroup = () => {
           color="gray">
           목표체중&nbsp;
         </Text>
-        <Text size="1.4rem">{targetkg}kg</Text>
+        <Text size="1.4rem">{mydata?.targetWeight}kg</Text>
       </Textdiv>
     </TextContainer>
   )
