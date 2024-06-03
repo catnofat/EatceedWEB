@@ -5,16 +5,7 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   plugins: [react()],
   server: {
+    port: 3000
     // Proxy 설정
-    proxy: {
-      // 경로가 "/api" 로 시작하는 요청을 대상으로 proxy 설정
-      '/v1': {
-        // 요청 전달 대상 서버 주소 설정
-        target: 'https://eatceed.net/',
-        changeOrigin: true,
-        secure: false,
-        ws: true
-      }
-    }
   }
 })

@@ -4,7 +4,12 @@ import Checkbox from '../atoms/Checkbox'
 import NutProgress from '../molecules/NutProgress'
 import Kgdiffgroup from '../molecules/KgdiffGroup'
 import messageicon from '../../assets/message.svg'
+import { useQuery } from '@tanstack/react-query'
+import { getMeal } from '../../services/meal'
+import { getDateMeal } from '../../services/meal'
+import { useState, useEffect } from 'react'
 
+// CSS
 const HalfContainer = styled.div`
   display: flex;
   overflow-y: hidden;
@@ -36,7 +41,6 @@ const Guagediv = styled.div`
   display: flex;
   justify-content: space-evenly;
 `
-
 const Emptydiv = styled.div`
   width: 4.5rem;
 `
@@ -60,7 +64,6 @@ const TextContainer = styled.div`
   background: linear-gradient(270deg, #ffbd84 0%, #ff9233 100%);
   box-shadow: 1px 4px 5px 0px rgba(0, 0, 0, 0.05);
 `
-
 const Icondiv = styled.div`
   border-color: transparent;
   width: 4.5rem;
@@ -69,30 +72,131 @@ const Icondiv = styled.div`
   background-size: 100% 100%;
   background-repeat: no-repeat;
 `
+
 const today = new Date()
 const formattedDate = `${today.getMonth() + 1}월 ${today.getDate()}일`
-
-const MainLeftTemplate = () => {
-  const response = {
-    maintainMeal: {
-      calorie: 0,
-      carbohydrate: 0,
-      protein: 0,
-      fat: 0
+const mealRecord = [
+  {
+    time: {
+      hour: 7,
+      minute: 0,
+      second: 0,
+      nano: 0
     },
-    targetMeal: {
-      calorie: 0,
-      carbohydrate: 0,
-      protein: 0,
-      fat: 0
+    mealType: 'BREAKFAST',
+    imageUri: 'string',
+    foods: [
+      {
+        id: 0,
+        name: '간장계란볶음밥'
+      },
+      {
+        id: 1,
+        name: '스팸'
+      },
+      {
+        id: 2,
+        name: '닭가슴살'
+      }
+    ]
+  },
+  {
+    time: {
+      hour: 12,
+      minute: 0,
+      second: 0,
+      nano: 0
     },
-    currentMeal: {
-      calorie: 0,
-      carbohydrate: 0,
-      protein: 0,
-      fat: 0
-    }
+    mealType: 'LUNCH',
+    imageUri: 'string',
+    foods: [
+      {
+        id: 1,
+        name: '간장계란볶음밥'
+      },
+      {
+        id: 2,
+        name: '스팸'
+      }
+    ]
+  },
+  {
+    time: {
+      hour: 18,
+      minute: 0,
+      second: 0,
+      nano: 0
+    },
+    mealType: 'DINNER',
+    imageUri: 'string',
+    foods: [
+      {
+        id: 1,
+        name: '간장계란볶음밥'
+      },
+      {
+        id: 3,
+        name: '닭가슴살'
+      }
+    ]
   }
+]
+const MainLeftTemplate = () => {
+  const [breakfast, setBreakfast] = useState(false)
+  const [lunch, setLunch] = useState(false)
+  const [dinner, setDinner] = useState(false)
+  const [elseMeal, setElseMeal] = useState(false)
+
+  useEffect(() => {
+    mealRecord.forEach(meal => {
+      switch (meal.mealType) {
+        case 'BREAKFAST':
+          setBreakfast(true)
+          break
+        case 'LUNCH':
+          setLunch(true)
+          break
+        case 'DINNER':
+          setDinner(true)
+          break
+        default:
+          setElseMeal(true)
+          break
+      }
+    })
+  }, [mealRecord])
+
+  const {
+    data: todaymeal,
+    error,
+    isLoading
+  } = useQuery({
+    queryKey: ['meal'],
+    queryFn: async () => {
+      const res = await getMeal()
+      return res.data
+    }
+  })
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error loading data</div>
+  }
+
+  const maintainMeal = todaymeal?.response?.maintainMeal
+  const targetMeal = todaymeal?.response?.targetMeal
+
+  // Ensure maintainMeal.calorie is a valid number
+  const calorie = maintainMeal?.calorie
+    ? parseInt(maintainMeal.calorie, 10)
+    : null
+
+  const targetcalorie = targetMeal?.calorie
+    ? parseInt(targetMeal.calorie, 10)
+    : null
 
   return (
     <HalfContainer>
@@ -102,42 +206,47 @@ const MainLeftTemplate = () => {
       </Textdiv>
       <Guagediv>
         <Emptydiv></Emptydiv>
-        <LiquidGaugeWidget
-          value={1200}
-          color="#4fbafe"
-          title="Revenue"
-        />
+        {calorie !== null && targetcalorie !== null ? (
+          <LiquidGaugeWidget
+            value={calorie}
+            target={targetcalorie}
+            color="#4fbafe"
+            title="Revenue"
+          />
+        ) : (
+          <div>Loading gauge...</div>
+        )}
         <Checkboxdiv>
           등록현황
           <Checkbox
             text="아침"
-            checked={true}
+            checked={breakfast}
           />
           <Checkbox
             text="점심"
-            checked={false}
+            checked={lunch}
           />
           <Checkbox
             text="저녁"
-            checked={true}
+            checked={dinner}
           />
         </Checkboxdiv>
       </Guagediv>
       <ProgressContainer>
         <NutProgress
           nuturition="탄수화물"
-          intake={100}
-          required={200}
+          intake={maintainMeal?.carbohydrate}
+          required={maintainMeal?.carbohydrate}
         />
         <NutProgress
           nuturition="단백질"
-          intake={130}
-          required={990}
+          intake={maintainMeal?.protein}
+          required={maintainMeal?.protein}
         />
         <NutProgress
           nuturition="지방"
-          intake={260}
-          required={330}
+          intake={maintainMeal?.fat}
+          required={maintainMeal?.fat}
         />
       </ProgressContainer>
       <Kgdiffgroup />
