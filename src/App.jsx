@@ -11,7 +11,6 @@ import AlarmPage from './pages/AlarmPage'
 import MyPage from './pages/MyPage'
 import NotFoundPage from './pages/NotFoundPage'
 import MainLayout from './layouts/MainLayout'
-import OnBoardingPage from './pages/OnBoardingPage'
 import './App.css'
 
 const App = () => {
