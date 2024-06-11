@@ -9,6 +9,20 @@
     font-family: pretendard;
   }
 
+  .react-calendar__tile.calorie-achieved {
+    color: grey !important;
+}
+
+.react-calendar__tile.calorie-not-achieved {
+  color: grey !important;
+}
+
+
+  #highlight {
+    background: #f3d6d6f3 !important;
+    color: white !important;
+  }
+
   /* Calendar component */
   .react-calendar {
     width: auto;
@@ -53,7 +67,6 @@
     align-items: center;
     aspect-ratio: 1 / 1;
     width: auto;
-    color: #333;
     font-weight: bold;
     cursor: pointer;
   }
