@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import thumbup from '../../assets/thumbup.svg'
 
 const Containerdiv = styled.div`
   display: flex;
@@ -86,6 +87,9 @@ const Titleimg = styled.div`
   background-color: rgba(255, 126, 13, 0.12);
 `
 const ReportGroup = () => {
+  const today = new Date()
+  const formattedDate = `${today.getMonth() + 1}월 ${today.getDate() - 7}일~${today.getMonth() + 1}월 ${today.getDate()}일`
+
   return (
     <Containerdiv>
       <MainContentbox>
@@ -94,14 +98,20 @@ const ReportGroup = () => {
           size="1.5rem"
           color="#ff7e0d"
           font="PretendardBold">
-          3월 25일~31일
+          {formattedDate}
         </Titletext>
         <Titletext
           size="2rem"
           font="PretendardBold">
           목표 섭취량을 달성하셨어요!
         </Titletext>
-        <Titleimg></Titleimg>
+        <Titleimg>
+          <img
+            src={thumbup}
+            width={100}
+            height={100}
+          />
+        </Titleimg>
         <Detaileddiv>주간 영양소 상세보기</Detaileddiv>
         <TextContainer
           mtop="2rem"

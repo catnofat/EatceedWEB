@@ -179,13 +179,14 @@ const MainLeftTemplate = () => {
   })
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <HalfContainer>Loading...</HalfContainer>
   }
 
   if (error) {
     return <div>Error loading data</div>
   }
 
+  console.log(todaymeal)
   const maintainMeal = todaymeal?.response?.maintainMeal
   const targetMeal = todaymeal?.response?.targetMeal
 

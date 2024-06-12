@@ -64,7 +64,8 @@ const Kgdiffgroup = () => {
           color="gray">
           목표체중&nbsp;
         </Text>
-        <Text size="1.4rem">{mydata?.targetWeight}kg</Text>
+        {/* <Text size="1.4rem">{mydata?.targetWeight}kg</Text> */}
+        <Text size="1.4rem">{70}kg</Text>
       </Textdiv>
     </TextContainer>
   )
