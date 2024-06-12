@@ -1,8 +1,64 @@
-# React + Vite
+# 프로젝트 소개
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+하루 3끼 이상, 규칙적인 식습관으로 건강한 체중 증량을 도와주는 서비스 **EATCEED**의 웹 버전입니다.
+체중 증량 확인, 목표에 대한 접근성 등을 넓히기 위해 웹 버전을 기획하게 되었습니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 프로그래머 정보
+
+전남대학교 캡스톤디자인(24.03.06 ~ 24.06.12) 팀 김앤장
+
+웹 버전
+
+- 김좌훈
+- 김정우
+
+안드로이드 버전
+
+- 김근성
+- 장홍준
+
+---
+
+# 사용 기술스택
+
+- Javascript + React
+- styledCSS
+- VITE
+
+# 프로그램 설치 방법
+
+웹 버전은 PC 화면에서 접속하는 사용자에게 최적화 되어있습니다.
+
+1. 프로젝트 설치
+
+`npm install`
+
+2. .env 파일 셋팅
+
+다음과 같이 `.env` 파일을 작성해주세요.
+
+```
+VITE_BASE_URL=https://eatceed.net
+VITE_SERVER_URL=https://eatceed.net
+```
+
+---
+
+# 프로젝트 구조
+
+**EATCEED**의 웹 버전은 크게 다음과 같은 서비스를 제공합니다.
+메인 페이지 : 오늘 섭취한 음식, 칼로리, 목표 및 세부 섭취 내용을 한 페이지에 들어오게 시각화합니다.
+캘린더 페이지: 목표를 달성한 날짜를 표기하고, 클릭 시 해당 일자의 세부 섭취 내용을 표시합니다.
+분석 페이지 : 오늘을 기준으로 일주일 영양 섭취량을 분석하여, 전체적인 정보와 부족한 부분을 보완하기 위한 분석을 해 줍니다.
+알람 페이지 : 간식시간이나 식사시간을 설정하는 알람 역할을 합니다.
+
+---
+
+# 향후 개발 사항
+
+- 예외 처리 및 오류 처리 부분을 추가해야 합니다.
+- 부분 부분 api로 완전히 구현되지 않은 부분들은, 임시로 만든 mock 데이터로 값을 채웠습니다. 이 부분을 교체해야 합니다.
+- 마이 페이지 부분은 현재 미구현 상태로, 안드로이드 버전으로 연결되는 qr코드가 있습니다.
+- 기능적으로 완성되지 않은 분석 페이지와 회원가입 페이지 등을 향후 완성시킬 계획입니다.
