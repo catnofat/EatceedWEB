@@ -29,10 +29,22 @@ export default class LiquidGaugeWidget extends Component {
         offset: '0%'
       },
       {
+        key: '25%',
+        stopColor: fillColor,
+        stopOpacity: 0.875,
+        offset: '25%'
+      },
+      {
         key: '50%',
         stopColor: fillColor,
         stopOpacity: 0.75,
         offset: '50%'
+      },
+      {
+        key: '75%',
+        stopColor: fillColor,
+        stopOpacity: 0.625,
+        offset: '75%'
       },
       {
         key: '100%',
@@ -48,7 +60,7 @@ export default class LiquidGaugeWidget extends Component {
           style={{ margin: '0 auto' }}
           width={radius * 2}
           height={radius * 2}
-          value={this.state.value / 20}
+          value={this.state.value / (this.targetCal / 100)}
           seevalue={this.state.value}
           percent="kcal"
           textSize={1}
